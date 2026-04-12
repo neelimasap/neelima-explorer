@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+<section class="hero" style="min-height:50vh;">
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0D1B2A 0%,#2C5F4A 100%);"></div>
+  <div class="orb" style="width:400px;height:400px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(230,126,34,0.3),transparent 70%);opacity:0.15;"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content" style="padding-bottom:40px;">
+    <span class="tag tag-forest mb-20">About</span>
+    <h1 class="italic" style="max-width:600px;">The explorer behind the lens</h1>
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#2C5F4A" "to" "#0F1E2D" "variant" 1) }}
+
+<section class="bg-slate section-pad">
+  <div class="container" style="max-width:760px;">
+    <div class="trip-description">{{ .Content }}</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;">
+      <a href="/trips/" class="btn btn-primary">Explore the trips</a>
+      <a href="/contact/" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat"><p class="about-stat-value">9</p><p class="about-stat-label">Expeditions</p></div>
+      <div class="about-stat"><p class="about-stat-value">4</p><p class="about-stat-label">Continents</p></div>
+      <div class="about-stat"><p class="about-stat-value">5895m</p><p class="about-stat-label">Highest summit</p></div>
+      <div class="about-stat"><p class="about-stat-value">$30k</p><p class="about-stat-label">Raised for charity</p></div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<section class="hero" style="min-height:50vh;">
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0D1B2A 0%,#1A3A4A 100%);"></div>
+  <div class="orb" style="width:400px;height:400px;top:-150px;right:-80px;background:radial-gradient(circle,rgba(44,95,74,0.5),transparent 70%);opacity:0.3;"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content" style="padding-bottom:40px;">
+    <span class="tag tag-ember mb-20">▲ All expeditions</span>
+    <h1 class="italic">The journeys</h1>
+    <p style="max-width:480px;font-size:1.1rem;margin-top:16px;">
+      {{ len .Pages }} expeditions across mountains, fjords, canyons and glaciers.
+    </p>
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#1A3A4A" "to" "#0F1E2D" "variant" 1) }}
+
+<section class="bg-slate section-pad-lg">
+  <div class="container">
+    <div class="trips-grid">
+      {{ range .Pages }}
+        {{ partial "trip-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

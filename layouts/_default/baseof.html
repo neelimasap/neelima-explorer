@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta property="og:type" content="website" />
+  {{ with .Params.hero_image }}<meta property="og:image" content="{{ . }}" />{{ end }}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">Neelima <span>Explorer</span></a>
+        <ul class="nav-links">
+          <li><a href="/trips/">Trips</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/contact/" class="btn btn-primary" style="padding:8px 20px;font-size:0.8rem;">Get in touch</a></li>
+        </ul>
+        <button class="nav-hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile">
+      <a href="/trips/">Trips</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main>{{ block "main" . }}{{ end }}</main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-logo">Neelima <span>Explorer</span></p>
+          <p class="footer-tagline">Documenting adventures across 4 continents — one summit at a time.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Explore</p>
+          <a href="/" class="footer-link">Home</a>
+          <a href="/trips/" class="footer-link">All Trips</a>
+          <a href="/about/" class="footer-link">About</a>
+          <a href="/contact/" class="footer-link">Contact</a>
+        </div>
+        <div>
+          <p class="footer-col-title">Destinations</p>
+          <p class="footer-link">Everest Base Camp</p>
+          <p class="footer-link">Kilimanjaro</p>
+          <p class="footer-link">Patagonia</p>
+          <p class="footer-link">Norway</p>
+          <p class="footer-link">Grand Canyon</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© {{ now.Year }} Neelima Explorer. All rights reserved.</p>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.25)" stroke-width="1.5">
+          <path d="M3 20L9 8l4 6 3-4 5 10H3z"/>
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

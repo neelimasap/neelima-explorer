@@ -1,0 +1,32 @@
+{{/* Usage: {{ partial "trip-card.html" . }} */}}
+{{ $biome := .Params.biome | default "mountain" }}
+{{ $biomeLabel := "▲ Mountain" }}
+{{ if eq $biome "ocean" }}{{ $biomeLabel = "~ Fjord" }}{{ end }}
+{{ if eq $biome "desert" }}{{ $biomeLabel = "◈ Canyon" }}{{ end }}
+
+<a href="{{ .RelPermalink }}" class="trip-card">
+  <div class="trip-card-visual">
+    {{ with .Params.hero_image }}
+      <img src="{{ . }}" alt="{{ $.Params.hero_image_alt | default $.Title }}" loading="lazy" />
+    {{ else }}
+      <div class="trip-card-visual-placeholder {{ $biome }}">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="1">
+          <path d="M3 20L9 8l4 6 3-4 5 10H3z"/>
+        </svg>
+      </div>
+    {{ end }}
+    <svg class="card-ridge" viewBox="0 0 400 60" preserveAspectRatio="none">
+      <path d="M0 60 L60 24 L100 38 L150 12 L200 30 L260 10 L320 28 L370 16 L400 60Z" fill="rgba(13,27,42,0.7)"/>
+    </svg>
+    {{ with .Params.date }}
+    <span class="card-year-badge">{{ . }}</span>
+    {{ end }}
+  </div>
+  <div class="trip-card-body">
+    <span class="trip-card-biome biome-{{ $biome }}">{{ $biomeLabel }}</span>
+    <p class="trip-card-title">{{ .Title }}</p>
+    {{ with .Params.location }}<p class="trip-card-location">{{ . }}</p>{{ end }}
+    {{ with .Summary }}<p class="trip-card-desc">{{ . }}</p>{{ end }}
+    <div class="trip-card-bar bar-{{ $biome }}"></div>
+  </div>
+</a>

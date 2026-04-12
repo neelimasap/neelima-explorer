@@ -1,0 +1,82 @@
+{{ define "main" }}
+{{ $biome := .Params.biome | default "mountain" }}
+{{ $biomeColor := "#2C5F4A" }}
+{{ if eq $biome "ocean" }}{{ $biomeColor = "#0D4F6A" }}{{ end }}
+{{ if eq $biome "desert" }}{{ $biomeColor = "#5A3D1A" }}{{ end }}
+{{ $accentColor := "var(--sage)" }}
+{{ if eq $biome "desert" }}{{ $accentColor = "var(--sand)" }}{{ end }}
+
+<section class="hero trip-hero">
+  {{ with .Params.hero_image }}
+  <div class="hero-bg-img" style="background-image:url('{{ . }}');"></div>
+  {{ else }}
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0D1B2A 0%,{{ $biomeColor }} 100%);"></div>
+  {{ end }}
+  <div class="hero-overlay"></div>
+  <div class="container hero-content" style="padding-bottom:60px;">
+    <a href="/trips/" class="trip-back">← All trips</a>
+    {{ with .Params.date }}<span class="tag tag-ember mb-16">{{ . }}</span>{{ end }}
+    <h1 class="italic mb-12">{{ .Title }}</h1>
+    {{ with .Params.subtitle }}
+    <p class="trip-subtitle" style="color:{{ $accentColor }};">{{ . }}</p>
+    {{ end }}
+    {{ with .Params.location }}
+    <p class="trip-location">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      {{ . }}
+    </p>
+    {{ end }}
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#0D1B2A" "to" "#0F1E2D" "variant" 1) }}
+
+<section class="bg-slate section-pad">
+  <div class="container">
+    <div class="trip-description">{{ .Content }}</div>
+  </div>
+</section>
+
+{{ with .Params.gallery }}
+{{ partial "mountain-divider.html" (dict "from" "#0F1E2D" "to" "#0D1B2A" "variant" 2) }}
+<section class="bg-navy section-pad">
+  <div class="container">
+    <span class="tag tag-forest mb-24">Gallery</span>
+    <div class="gallery-grid">
+      {{ range . }}
+      <div class="gallery-item">
+        <img src="{{ .src }}" alt="{{ .alt | default "Trip photo" }}" loading="lazy" />
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.sponsors }}
+{{ partial "mountain-divider.html" (dict "from" "#0D1B2A" "to" "#0A1420" "variant" 3) }}
+<section class="bg-dark" style="padding:48px 0 64px;">
+  <div class="container">
+    <p class="footer-col-title mb-24">With thanks to our sponsors</p>
+    <div class="sponsors-grid">
+      {{ range . }}
+      <div class="sponsor-item">
+        <img src="{{ .src }}" alt="{{ .alt | default "Sponsor" }}" />
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<section style="background:linear-gradient(135deg,#0D1B2A,{{ $biomeColor }});padding:60px 0;text-align:center;position:relative;overflow:hidden;">
+  <div class="orb" style="width:300px;height:300px;top:-150px;right:-50px;background:radial-gradient(circle,rgba(44,95,74,0.4),transparent 70%);opacity:0.25;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <p style="color:var(--parchment-dim);margin-bottom:16px;">Continue exploring</p>
+    <a href="/trips/" class="btn btn-primary">← Back to all trips</a>
+  </div>
+</section>
+
+{{ end }}

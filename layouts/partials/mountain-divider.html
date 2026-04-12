@@ -1,0 +1,17 @@
+{{/* Usage: {{ partial "mountain-divider.html" (dict "from" "#0D1B2A" "to" "#0F1E2D" "variant" 1) }} */}}
+{{ $variant := .variant | default 1 }}
+<div class="mountain-divider" style="background:{{ .from }}">
+  {{ if eq $variant 1 }}
+  <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48 L0 28 L80 6 L150 22 L230 2 L320 18 L410 0 L500 16 L580 4 L660 20 L750 8 L850 24 L950 6 L1050 22 L1200 10 L1200 48 Z" fill="{{ .to }}"/>
+  </svg>
+  {{ else if eq $variant 2 }}
+  <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48 L0 32 L100 12 L180 26 L260 8 L360 24 L440 4 L540 20 L620 8 L720 22 L800 6 L900 26 L980 10 L1080 24 L1200 14 L1200 48 Z" fill="{{ .to }}"/>
+  </svg>
+  {{ else }}
+  <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48 L0 36 L70 16 L140 30 L220 10 L300 26 L380 6 L480 22 L560 10 L660 28 L740 8 L840 24 L920 12 L1020 28 L1100 16 L1200 32 L1200 48 Z" fill="{{ .to }}"/>
+  </svg>
+  {{ end }}
+</div>

@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb" style="width:500px;height:500px;top:-120px;right:-100px;background:radial-gradient(circle,rgba(44,95,74,0.45),transparent 70%);opacity:0.35;"></div>
+  <div class="orb" style="width:350px;height:350px;bottom:-80px;left:30%;background:radial-gradient(circle,rgba(230,126,34,0.3),transparent 70%);opacity:0.15;"></div>
+  <div class="orb" style="width:400px;height:400px;top:40%;left:-100px;background:radial-gradient(circle,rgba(26,58,74,0.8),transparent 70%);opacity:0.3;"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="tag tag-ember fade-up mb-24">▲ Adventure · Exploration</span>
+    <h1 class="hero-title fade-up delay-1">Every summit<br/>tells a story.</h1>
+    <p class="hero-sub fade-up delay-2">9 expeditions across 4 continents — from the Khumbu Glacier to the Patagonian steppe.</p>
+    <div class="hero-ctas fade-up delay-3">
+      <a href="/trips/" class="btn btn-primary">Explore the trips</a>
+      <a href="/about/" class="btn btn-ghost">About Neelima</a>
+    </div>
+    <div class="hero-pills fade-up delay-4">
+      <span class="hero-pill">Everest Base Camp</span>
+      <span class="hero-pill">Kilimanjaro</span>
+      <span class="hero-pill">Patagonia</span>
+      <span class="hero-pill">Norway</span>
+      <span class="hero-pill">Banff</span>
+      <span class="hero-pill">Grand Canyon</span>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><p class="stat-value">9</p><p class="stat-label">Expeditions</p></div>
+        <div class="stat-item"><p class="stat-value">4</p><p class="stat-label">Continents</p></div>
+        <div class="stat-item"><p class="stat-value">5895m</p><p class="stat-label">Highest point</p></div>
+        <div class="stat-item"><p class="stat-value">2013–21</p><p class="stat-label">Years active</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#0D1B2A" "to" "#0F1E2D" "variant" 1) }}
+
+<section class="bg-slate section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="tag tag-forest mb-16">The expeditions</span>
+        <h2>Where I've been</h2>
+      </div>
+      <a href="/trips/" class="btn btn-ghost">View all trips →</a>
+    </div>
+    <div class="trips-grid">
+      {{ range (where .Site.RegularPages "Section" "trips") | first 6 }}
+        {{ partial "trip-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#0F1E2D" "to" "#0D1B2A" "variant" 2) }}
+
+<section class="cta-section bg-navy">
+  <div class="orb" style="width:400px;height:400px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(44,95,74,0.4),transparent 70%);opacity:0.2;"></div>
+  <div class="container">
+    <span class="tag tag-ember mb-20">Got a trip in mind?</span>
+    <h2 style="max-width:500px;margin:0 auto 16px;">Let's plan the next adventure</h2>
+    <p style="max-width:400px;margin:0 auto 36px;">Thinking about a similar expedition? Send me a note and let's talk about it.</p>
+    <a href="/contact/" class="btn btn-primary">Send a note →</a>
+  </div>
+</section>
+
+{{ end }}

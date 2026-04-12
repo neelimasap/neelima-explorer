@@ -1,0 +1,74 @@
+{{ define "main" }}
+
+<section class="hero" style="min-height:45vh;">
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0D1B2A 0%,#163d2e 100%);"></div>
+  <div class="orb" style="width:350px;height:350px;top:-100px;right:-80px;background:radial-gradient(circle,rgba(230,126,34,0.3),transparent 70%);opacity:0.12;"></div>
+  <div class="orb" style="width:450px;height:450px;top:-200px;left:-100px;background:radial-gradient(circle,rgba(44,95,74,0.5),transparent 70%);opacity:0.2;"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content" style="padding-bottom:40px;">
+    <span class="tag tag-ember mb-20">Get in touch</span>
+    <h1 class="italic" style="max-width:500px;">Let's talk about the next adventure</h1>
+  </div>
+</section>
+
+{{ partial "mountain-divider.html" (dict "from" "#163d2e" "to" "#0F1E2D" "variant" 1) }}
+
+<section class="bg-slate section-pad-lg">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-family:var(--font-display);margin-bottom:20px;">Say hello</h3>
+        <p style="margin-bottom:32px;line-height:1.9;">Whether you're planning a similar expedition, curious about a destination, interested in sponsoring a charitable adventure, or just want to connect — I'd love to hear from you.</p>
+        <div class="contact-info-item">
+          <span class="contact-info-icon">▲</span>
+          <div><p class="contact-info-label">Expedition inquiries</p><p class="contact-info-desc">Planning a high-altitude trek or adventure</p></div>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-icon">◉</span>
+          <div><p class="contact-info-label">Sponsorship</p><p class="contact-info-desc">Supporting charitable expeditions</p></div>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-icon">〰</span>
+          <div><p class="contact-info-label">General</p><p class="contact-info-desc">Questions, stories, or collaboration</p></div>
+        </div>
+        <div style="margin-top:32px;padding:18px 20px;background:rgba(230,126,34,0.08);border:1px solid rgba(230,126,34,0.25);border-radius:var(--radius-md);">
+          <p style="font-size:0.8rem;color:var(--sand);font-weight:600;margin-bottom:6px;">▲ Charitable fundraising</p>
+          <p style="font-size:0.8rem;color:var(--parchment-dim);line-height:1.7;">The Everest Base Camp expedition raised $30,000 for charity with the help of incredible sponsors and supporters.</p>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE" />
+          <input type="hidden" name="redirect" value="/contact/success/" />
+          <div class="form-row">
+            <div>
+              <label class="form-label">Name</label>
+              <input type="text" name="name" class="form-input" placeholder="Your name" required />
+            </div>
+            <div>
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select name="subject" class="form-select" required>
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="expedition">Expedition inquiry</option>
+              <option value="sponsorship">Sponsorship / charity</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="general">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-textarea" placeholder="Tell me about your adventure, question, or idea..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
