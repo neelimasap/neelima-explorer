@@ -1,0 +1,16 @@
+baseURL = "https://www.neelimaexplorer.com"
+languageCode = "en-us"
+title = "Neelima Explorer"
+
+[params]
+  description = "9 expeditions across 4 continents — adventure travel documented."
+  tagline = "Every summit tells a story."
+  author = "Neelima"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  trips = "/trips/:slug/"
